@@ -38,4 +38,7 @@ export KRB5CCNAME=/tmp/krb5cc_minenow
 grep -Horni <TEXT> <PATH> 
 grep -Hrni <TEXT> <PATH> 
 
+# test reverse ping
+sudo tcpdump -i tun0 icmp
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
