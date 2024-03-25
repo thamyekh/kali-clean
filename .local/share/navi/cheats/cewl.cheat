@@ -1,0 +1,24 @@
+% start tags
+
+# spider site write all found words to file
+cewl -w <file> <url>
+
+# spider site follow links to other sites
+cewl -o <url>
+
+# spider site using given user-agent 
+cewl -u <useragent> <url>
+
+# spider site for given depth minimum word length
+cewl -d <depth> -m <min_word_length> <url>
+
+# spider site include count for each word
+cewl -c <url>
+
+# spider site inluding meta data separate the meta_data words
+cewl -a -meta_file <file> <url>
+
+# spider site store email adresses in separate file
+cewl -e -email_file <file> <url>
+
+$ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
