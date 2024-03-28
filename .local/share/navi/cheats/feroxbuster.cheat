@@ -2,9 +2,12 @@
 
 # non-recursive forced browsing
 feroxbuster -u <URL> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt -q -n -o ferox.txt
+also try /usr/share/seclists/Discovery/Web-Content/common.txt
 
 # filter out status code
 feroxbuster -u <URL> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt -C <STATUS_CODE> -q -n -o ferox.txt
+also try /usr/share/seclists/Discovery/Web-Content/common.txt
 
 # limit connections THREAD*CON_LIMIT (avoid DoS)
 feroxbuster -u <URL> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt -t <THREADS> -L <CON_LIMIT> -q -n -o ferox.txt
+also try /usr/share/seclists/Discovery/Web-Content/common.txt

