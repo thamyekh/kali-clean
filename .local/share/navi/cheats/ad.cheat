@@ -1,6 +1,6 @@
-% ldapsearch
+% active directory
 
-#get domain info ie naming context
+# get domain info ie naming context
 ldapsearch -x -H ldap://<IP> -s base namingcontexts
 
 # null credentials
@@ -14,5 +14,8 @@ ldapsearch -x -h 192.168.64.122 -D 'hutch\fmcsorley' -w 'CrabSharkJellyfish192' 
 
 # if LAPS application is used
 ldapsearch -v -x -D fmcsorley@HUTCH.OFFSEC -w CrabSharkJellyfish192 -b "DC=hutch,DC=offsec" -h 192.168.120.108 "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
+
+# kerbrute usernames
+./kerbrute userenum -d <DOMAIN> --dc <DC_IP> /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
