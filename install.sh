@@ -4,13 +4,20 @@ sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt -yq upgrade
 cat requirements_utilities.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
 cat requirements_toolset.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
 
+# install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
 # personalised configurations
 cp -r .config .local .mozilla .rustscan.toml .zprofile $HOME
 mkdir -p $HOME/.local/bin
 sed -i "s/#alias dir='dir --color=auto'/alias n='navi --print'/" $HOME/.zshrc
+sed -i "s/#alias vdir='vdir --color=auto'/alias vim='nvim'/" $HOME/.zshrc
 betterlockscreen -u . --fx color --color 808080
 
 # rust tools install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 cargo install rustscan navi
 # python tools install
 pip3 install bloodhound

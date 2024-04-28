@@ -1,6 +1,7 @@
 # ~/.zprofile: executed by the command interpreter for login shells.
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then

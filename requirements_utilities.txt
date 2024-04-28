@@ -8,7 +8,6 @@ automake
 autotools-dev
 betterlockscreen
 build-essential
-cargo
 checkinstall
 cifs-utils
 compton
@@ -24,7 +23,6 @@ jq
 krb5-user
 m4
 meson
-neovim
 openvpn
 p7zip-full
 papirus-icon-theme

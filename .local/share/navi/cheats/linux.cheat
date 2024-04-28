@@ -1,0 +1,20 @@
+% linux
+
+# wifi drivers
+lspci | grep "Network controller”
+apt-get update
+apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
+modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+modprobe wl
+
+# connecting to wifi
+nmcli device wifi list
+nmcli device wifi connect <SSID> password <PASS>
+
+# apt purge proper
+sudo apt-get purge --auto-remove <PKG_NAME>
+
+# kill process by name
+pkill -f <NAME>
+
+$ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

