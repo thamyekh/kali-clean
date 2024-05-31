@@ -23,9 +23,11 @@ jq
 krb5-user
 m4
 meson
+neovim
 openvpn
 p7zip-full
 papirus-icon-theme
+pipewire
 powershell-lts
 python3-dnspython
 python3-pip

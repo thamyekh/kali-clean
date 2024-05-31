@@ -1,0 +1,6 @@
+% helix
+
+# add language support
+hx --health <lang>
+:lang <lang>
+
