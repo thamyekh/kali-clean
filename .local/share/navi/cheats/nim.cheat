@@ -1,0 +1,21 @@
+% nim
+
+# compile windows
+nim c -d=debug -d=mingw --embedsrc=on --hints=on --app=console --cpu=amd64 --out=bin/shell.exe src/shellcode_bin.nim
+
+# create project
+nimble init
+
+# print inline code
+echo &"[!] LoadLibraryA Failed With Error: {GetLastError()}"
+
+# compile C in nim
+when not defined(c):
+    {.error: "Must be compiled in c mode"}
+{.emit: """
+<C_CODE_GOES_HERE>
+""".}
+
+#
+
+#

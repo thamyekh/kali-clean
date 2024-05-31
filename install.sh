@@ -4,11 +4,6 @@ sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt -yq upgrade
 cat requirements_utilities.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
 cat requirements_toolset.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
 
-# install neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-
 # personalised configurations
 cp -r .config .local .mozilla .rustscan.toml .zprofile $HOME
 mkdir -p $HOME/.local/bin
@@ -41,10 +36,8 @@ curl -sL https://api.github.com/repos/DominicBreuker/pspy/releases/latest | jq -
 sudo mkdir -p /opt/lin/pspy && sudo wget -i /tmp/git_pspy -P /opt/lin/pspy
 sudo git clone https://github.com/ivan-sincek/php-reverse-shell.git /opt/web/php-reverse-shell
 sudo wget https://raw.githubusercontent.com/flozz/p0wny-shell/master/shell.php -P /opt/web/p0wny-shell
-sudo wget https://raw.githubusercontent.com/61106960/adPEAS/main/adPEAS.ps1 -P /opt/win
 sudo wget https://raw.githubusercontent.com/61106960/adPEAS/main/adPEAS-Light.ps1 -P /opt/win
 sudo wget https://raw.githubusercontent.com/GetRektBoy724/LocalAMSI.Fail/main/AMSIFailGenerator.cs -P /opt/win
-sudo wget https://raw.githubusercontent.com/z3mms/HostRecon/master/HostRecon.ps1 -P /opt/win
 sudo wget https://raw.githubusercontent.com/thamyekh/OSEP-Code-Snippets/main/active_directory/Invoke-Mimikatz2.ps1 -P /opt/win
 sudo wget https://gitlab.com/kalilinux/packages/windows-binaries/-/raw/kali/master/nc.exe -P /opt/win
 sudo wget https://raw.githubusercontent.com/BC-SECURITY/Empire/main/empire/server/data/module_source/situational_awareness/network/powerview.ps1 -P /opt/win
@@ -72,7 +65,3 @@ mkdir -p $HOME/.local/share/fonts/iosevka && 7z x /tmp/Iosevka.zip -o$HOME/.loca
 mkdir -p $HOME/.local/share/fonts/robotomono && 7z x /tmp/RobotoMono.zip -o$HOME/.local/share/fonts/robotomono
 fc-cache -fv
 chown -R kali:kali $HOME
-
-# configure audio
-sudo apt -y install pipewire-pulse wireplumber pipewire-media-session-
-systemctl --user --now enable wireplumber.service
