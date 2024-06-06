@@ -16,7 +16,7 @@ curl
 feh
 firefox-esr
 flameshot
-freerdp2-x11
+freerdp3-x11
 fzf
 gedit
 jq
@@ -28,10 +28,8 @@ openvpn
 p7zip-full
 papirus-icon-theme
 pipewire
+pipx
 powershell-lts
-python3-dnspython
-python3-pip
-python3-venv
 python-is-python3
 rofi
 terminator

