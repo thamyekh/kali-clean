@@ -15,7 +15,9 @@ betterlockscreen -u . --fx color --color 808080
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 cargo install rustscan navi
 # python tools install
-pip3 install bloodhound
+pipx ensurepath
+pipx install bloodhound
+pipx install git+https://github.com/Pennyw0rth/NetExec
 # ruby tools install
 sudo gem install evil-winrm
 

