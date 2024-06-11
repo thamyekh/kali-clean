@@ -3,9 +3,6 @@ i3blocks
 i3lock-color
 apache2
 arc-theme
-autoconf
-automake
-autotools-dev
 betterlockscreen
 build-essential
 checkinstall
@@ -21,8 +18,6 @@ fzf
 gedit
 jq
 krb5-user
-m4
-meson
 neovim
 openvpn
 p7zip-full
@@ -34,6 +29,5 @@ python-is-python3
 rofi
 terminator
 thunar
-unclutter
 xinit
 xorg
