@@ -1,8 +1,7 @@
 bloodhound
 chisel
 crackmapexec
-enum4linux
-exiftool
+enum4linux-ng
 exploitdb
 feroxbuster
 hashcat
@@ -11,10 +10,8 @@ hydra
 impacket-scripts
 ligolo-ng
 metasploit-framework
-mitmproxy
 name-that-hash
 neo4j
-nikto
 nmap
 proxychains4
 python3-impacket
@@ -23,9 +20,7 @@ rlwrap
 seclists
 sendemail
 smbclient
-smbmap
 snmp
 sqlmap
-sshuttle
 sslscan
 wireshark

@@ -1,0 +1,7 @@
+% linux misc
+
+# find the largest folders
+sudo du -h --max-depth=1 / | sort -h | tail -n 10
+
+# free disk space
+df -h

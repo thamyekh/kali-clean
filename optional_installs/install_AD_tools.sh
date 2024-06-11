@@ -11,3 +11,7 @@ mv /tmp/krbrelayx/dnstool.py $HOME/.local/bin && chmod +x $HOME/.local/bin/dnsto
 mv /tmp/krbrelayx/krbrelayx.py $HOME/.local/bin && chmod +x $HOME/.local/bin/krbrelayx.py
 mv /tmp/krbrelayx/printerbug.py $HOME/.local/bin && chmod +x $HOME/.local/bin/printerbug.py
 mv /tmp/krbrelayx/lib $HOME/.local/bin
+sudo apt install python3-dnspython
+# whisker msDS-KeyCredentialLink (untested)
+git clone https://github.com/ShutdownRepo/pywhisker /tmp/pywhisker
+mv /tmp/pywhisker/pywhisker.py $HOME/.local/bin && chmod +x $HOME/.local/bin/pywhisker.py
