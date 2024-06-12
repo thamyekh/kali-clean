@@ -5,3 +5,19 @@ sudo du -h --max-depth=1 / | sort -h | tail -n 10
 
 # free disk space
 df -h
+
+# journalctl systemctl logs
+journalctl -xeu <SERVICE>
+
+# get graphics details
+lspci | grep -i vga
+
+# change resolution X11
+xrandr
+xrandr --output <display_name> --mode <resolution>
+
+# create resolution X11 (example 1920x900x60Hz)
+cvt 1920 900 60
+xrandr --newmode "1920x900"  142.50  1920 2032 2232 2544  900 903 913 934 -hsync +vsync
+xrandr --addmode Virtual-1 1920x900
+xrandr --output Virtual-1 --mode 1920x900
