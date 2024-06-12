@@ -1,0 +1,5 @@
+% deprecated
+
+# offline bypass amsi generator
+sudo wget https://raw.githubusercontent.com/GetRektBoy724/LocalAMSI.Fail/main/AMSIFailGenerator.cs -P /opt/win
+sudo mcs /opt/win/AMSIFailGenerator.cs && sudo mono /opt/win/AMSIFailGenerator.exe

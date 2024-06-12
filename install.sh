@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 sudo apt update && sudo DEBIAN_FRONTEND=noninteractive apt -yq upgrade
-cat requirements_utilities.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
-cat requirements_toolset.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
+apt-cache --generate pkgnames | grep -Fxf requirements_utilities.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
+apt-cache --generate pkgnames | grep -Fxf requirements_toolset.txt | xargs sudo DEBIAN_FRONTEND=noninteractive apt -yq install
 
 # personalised configurations
 cp -r .config .local .mozilla .rustscan.toml .zprofile $HOME
@@ -24,6 +24,7 @@ sudo gem install evil-winrm
 sudo mkdir -p /opt/lin /opt/web /opt/win
 curl -sL https://api.github.com/repos/jpillora/chisel/releases/latest | jq -r ".assets[].browser_download_url" | grep -e 386 -e amd64 | grep -v darwin | tee /tmp/git_download
 curl -sL https://api.github.com/repos/projectdiscovery/naabu/releases/latest | jq -r ".assets[].browser_download_url" | grep -e 386 -e amd64 | tee -a /tmp/git_download
+curl -sL https://api.github.com/repos/nicocha30/ligolo-ng/releases/latest | jq -r ".assets[].browser_download_url" | grep -e 386 -e amd64 | grep agent | tee -a /tmp/git_download
 cat /tmp/git_download | grep linux | tee /tmp/git_download_lin
 cat /tmp/git_download | grep windows | tee /tmp/git_download_win
 elf=$(curl -sL https://api.github.com/repos/ernw/static-toolbox/releases | jq -r ".[].tag_name" | grep nmap | head -n 1)
@@ -38,7 +39,6 @@ sudo mkdir -p /opt/lin/pspy && sudo wget -i /tmp/git_pspy -P /opt/lin/pspy
 sudo git clone https://github.com/ivan-sincek/php-reverse-shell.git /opt/web/php-reverse-shell
 sudo wget https://raw.githubusercontent.com/flozz/p0wny-shell/master/shell.php -P /opt/web/p0wny-shell
 sudo wget https://raw.githubusercontent.com/61106960/adPEAS/main/adPEAS-Light.ps1 -P /opt/win
-sudo wget https://raw.githubusercontent.com/GetRektBoy724/LocalAMSI.Fail/main/AMSIFailGenerator.cs -P /opt/win
 sudo wget https://raw.githubusercontent.com/thamyekh/OSEP-Code-Snippets/main/active_directory/Invoke-Mimikatz2.ps1 -P /opt/win
 sudo wget https://gitlab.com/kalilinux/packages/windows-binaries/-/raw/kali/master/nc.exe -P /opt/win
 sudo wget https://raw.githubusercontent.com/BC-SECURITY/Empire/main/empire/server/data/module_source/situational_awareness/network/powerview.ps1 -P /opt/win
