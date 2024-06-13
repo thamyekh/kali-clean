@@ -21,3 +21,7 @@ cvt 1920 900 60
 xrandr --newmode "1920x900"  142.50  1920 2032 2232 2544  900 903 913 934 -hsync +vsync
 xrandr --addmode Virtual-1 1920x900
 xrandr --output Virtual-1 --mode 1920x900
+
+# convert vmware ova to qemu format
+tar xvf <VM>.ova
+qemu-img convert -O qcow2 <VM>.vmdk <VM>.qcow2

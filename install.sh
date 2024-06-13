@@ -12,7 +12,7 @@ betterlockscreen -u . --fx color --color 808080
 
 # rust tools install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-cargo install rustscan navi
+$HOME/.cargo/bin/cargo install rustscan navi
 # python tools install
 pipx ensurepath
 pipx install bloodhound smbmap sshuttle
