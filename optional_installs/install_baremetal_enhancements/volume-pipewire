@@ -1,0 +1,66 @@
+#!/bin/bash
+# displays volume and mute status for i3blocks
+# modified from https://github.com/Zeioth/i3blocks-contrib/blob/master/volume-pipewire/volume-pipewire
+
+AUDIO_HIGH_SYMBOL=${AUDIO_HIGH_SYMBOL:-'  '}
+AUDIO_MED_THRESH=${AUDIO_MED_THRESH:-50}
+AUDIO_MED_SYMBOL=${AUDIO_MED_SYMBOL:-'  '}
+AUDIO_LOW_THRESH=${AUDIO_LOW_THRESH:-0}
+AUDIO_LOW_SYMBOL=${AUDIO_LOW_SYMBOL:-'  '}
+AUDIO_MUTED_SYMBOL=${AUDIO_MUTED_SYMBOL:-'  '}
+AUDIO_DELTA=${AUDIO_DELTA:-1}
+
+while getopts H:M:L:X:T:t:h opt; do
+    case "$opt" in
+        H) AUDIO_HIGH_SYMBOL="$OPTARG" ;;
+        M) AUDIO_MED_SYMBOL="$OPTARG" ;;
+        L) AUDIO_LOW_SYMBOL="$OPTARG" ;;
+        X) AUDIO_MUTED_SYMBOL="$OPTARG" ;;
+        T) AUDIO_MED_THRESH="$OPTARG" ;;
+        t) AUDIO_LOW_THRESH="$OPTARG" ;;
+        h) printf \
+"Usage: volume-pipewire [-H symb] [-M symb] [-L symb] [-X symb] [-T thresh] [-t thresh] [-h]
+Options:
+-d\tUse device description instead of name if possible
+-H\tSymbol to use when audio level is high. Default: '$AUDIO_HIGH_SYMBOL'
+-M\tSymbol to use when audio level is medium. Default: '$AUDIO_MED_SYMBOL'
+-L\tSymbol to use when audio level is low. Default: '$AUDIO_LOW_SYMBOL'
+-X\tSymbol to use when audio is muted. Default: '$AUDIO_MUTED_SYMBOL'
+-T\tThreshold for medium audio level. Default: $AUDIO_MED_THRESH
+-t\tThreshold for low audio level. Default: $AUDIO_LOW_THRESH
+-h\tShow this help text
+" && exit 0;;
+    esac
+done
+
+case "$BLOCK_BUTTON" in
+    1) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+    3) pavucontrol &>/dev/null & ;;
+    4) wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ $AUDIO_DELTA%+ ;;
+    5) wpctl set-volume @DEFAULT_AUDIO_SINK@ $AUDIO_DELTA%- ;;
+esac
+
+function print_block {
+    ACTIVE=$(wpctl status -k | grep "*")
+    VOL=$(echo "$ACTIVE" | grep -oP '(?<=\[vol: 0\.)\d+(?=\])')
+    NAME=$(echo "$ACTIVE" | grep -oP '\d+\. \K.*?(?=\s*\[)')
+    MUTED=$(echo "$ACTIVE" | grep -o 'MUTED')
+
+    if [[ $MUTED = "" ]] ; then
+        SYMB=$AUDIO_HIGH_SYMBOL
+        [[ $VOL -le $AUDIO_MED_THRESH ]] && SYMB=$AUDIO_MED_SYMBOL
+        [[ $VOL -le $AUDIO_LOW_THRESH ]] && SYMB=$AUDIO_LOW_SYMBOL
+        COLOR=$DEFAULT_COLOR
+        echo ${SYMB} ${NAME} ${VOL}%
+    else
+        SYMB=$AUDIO_MUTED_SYMBOL
+        COLOR=$MUTED_COLOR
+        echo ${SYMB} ${NAME}
+    fi
+
+    if [[ $ACTIVE = "" ]] ; then
+        echo "${AUDIO_MUTED_SYMBOL} inactive"
+    fi
+        echo "$COLOR"
+}
+print_block

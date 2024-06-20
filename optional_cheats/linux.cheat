@@ -25,3 +25,9 @@ xrandr --output Virtual-1 --mode 1920x900
 # convert vmware ova to qemu format
 tar xvf <VM>.ova
 qemu-img convert -O qcow2 <VM>.vmdk <VM>.qcow2
+
+# kill process by name
+pkill <PROCESS_NAME>
+
+# apt purge
+sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove

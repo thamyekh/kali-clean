@@ -1,1 +1,0 @@
-- Switch to pipx for installing tools like bloodhound and netexec
