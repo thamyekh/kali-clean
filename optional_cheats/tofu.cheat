@@ -1,0 +1,41 @@
+% opentofu aws
+
+# initialise new project
+sudo apt install awscli
+Login to AWS > IAM > Users > Create user > User name: opentofu > Next > Attach policies directly > AdministratorAccess > Create user
+opentofu > Security credentials > Create access key > Command Line Interface (CLI) > Create access key
+aws configure
+AWS Access Key ID [None]: YOUR-AWS-ACCESS-KEY
+AWS Secret Access Key [None]: YOUR-AWS-SECRET-KEY
+Default region name [None]: ap-southeast-2
+Default output format [None]: text
+create a provider.tf/main.tf using a template online
+tofu init
+tofu validate
+
+# show vpc deets
+tofu state show aws_vpc.<VPC_NAME>
+
+# view changes to your infrastructure
+tofu plan
+
+# when you are ready create changes to your aws resouces
+tofu apply
+tofu apply -target=<resource_type>.<resource_name>
+
+# if you made a mistake remove the created instance
+tofu destroy -target=<resource_type>.<resource_name>
+
+# tidy formatting of .tf files
+tofu fmt
+
+# create keypair to use with instances
+ssh-keygen -t ed25519 -C "<discription_of_key>" -f ~/keys/<key_filename> # linux
+ssh-keygen -t rsa -b 2048 -m pem -C "<discription_of_key>" -f ~/keys/<key_filename> # windows
+chmod 600 $HOME/keys/<key_filename>
+add to main.tf:
+resource "aws_key_pair" "<key_name>" {
+  key_name   = "<key_name>"
+  public_key = file("~/keys/<key_filename>.pub")
+}
+

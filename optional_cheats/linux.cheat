@@ -31,3 +31,6 @@ pkill <PROCESS_NAME>
 
 # apt purge
 sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove
+
+# export PATH temporarily
+export PATH="$HOME/go/bin:$PATH"
