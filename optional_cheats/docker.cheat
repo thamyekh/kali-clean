@@ -1,0 +1,13 @@
+% docker
+
+# stops and then starts a container
+docker restart <CONTAINER_NAME_OR_ID>
+equivalent:
+docker stop <CONTAINER_NAME_OR_ID>
+docker start <CONTAINER_NAME_OR_ID>
+
+# find the name or ID of container
+docker ps -a
+
+# start all containers
+docker restart $(docker ps -aq)
