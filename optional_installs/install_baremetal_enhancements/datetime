@@ -1,0 +1,7 @@
+#!/bin/dash
+
+case "$BLOCK_BUTTON" in
+    1) gnome-calendar &>/dev/null & ;;
+    3) gnome-calendar &>/dev/null & ;;
+esac
+date '+%A, %d/%m/%y - %I:%M %p '

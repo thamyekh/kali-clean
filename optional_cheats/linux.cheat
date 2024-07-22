@@ -34,3 +34,11 @@ sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove
 
 # export PATH temporarily
 export PATH="$HOME/go/bin:$PATH"
+
+# creating boot drive from iso
+sudo mkfs.exfat /dev/sdX
+sudo fsck /dev/sdX
+sudo dd bs=4M if=/path/to/file.iso of=/dev/sdX status=progress oflag=sync
+
+# fix usb devices not detected
+sudo lsusb -v

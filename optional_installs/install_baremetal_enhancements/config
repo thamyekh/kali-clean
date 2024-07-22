@@ -91,6 +91,7 @@ bar {
 }
 
 for_window [class="pavucontrol"] floating enable
+for_window [class="gnome-calendar"] floating enable
 for_window [class="^.*"] border pixel 2
 gaps inner 2
 gaps outer 4

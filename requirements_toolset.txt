@@ -1,8 +1,7 @@
-bloodhound
-chisel
 crackmapexec
 enum4linux-ng
 exploitdb
+evil-winrm
 feroxbuster
 hashcat
 ffuf
@@ -11,7 +10,7 @@ impacket-scripts
 ligolo-ng
 metasploit-framework
 name-that-hash
-neo4j
+netexec
 nmap
 proxychains4
 python3-impacket
@@ -22,5 +21,6 @@ sendemail
 smbclient
 snmp
 sqlmap
+sshuttle
 sslscan
 wireshark

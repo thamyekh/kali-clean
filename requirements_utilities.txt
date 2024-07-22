@@ -22,7 +22,6 @@ openvpn
 p7zip-full
 papirus-icon-theme
 pipewire
-pipx
 powershell-lts
 python-is-python3
 rofi

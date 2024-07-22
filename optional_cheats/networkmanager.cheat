@@ -1,0 +1,18 @@
+% networkmanager
+
+# status
+sudo systemctl status NetworkManager
+sudo systemctl status networking
+
+# apply new IP settings after modifying in GUI
+nmcli networking off
+nmcli networking on
+
+# permanent IP configurations
+sudo vim /etc/NetworkManager/system-connections
+sudo nmcli device reapply
+
+# change IP address via CLI
+sudo nmcli device modify <interface_name> ipv4.address <ip_address>
+sudo nmcli device reapply <interface_name>
+

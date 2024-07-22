@@ -13,12 +13,6 @@ betterlockscreen -u . --fx color --color 808080
 # rust tools install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 $HOME/.cargo/bin/cargo install rustscan navi
-# python tools install
-pipx ensurepath
-pipx install bloodhound smbmap sshuttle
-pipx install git+https://github.com/Pennyw0rth/NetExec
-# ruby tools install
-sudo gem install evil-winrm
 
 # wget tools install into /opt
 sudo mkdir -p /opt/lin /opt/web /opt/win
@@ -54,8 +48,6 @@ sudo wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPE
 sudo ln -s /opt/lin /var/www/html/lin
 sudo ln -s /opt/web /var/www/html/web
 sudo ln -s /opt/win /var/www/html/win
-sudo ln -s /usr/lib/bloodhound/resources/app/Collectors/SharpHound.exe /opt/win/SharpHound.exe
-sudo ln -s /usr/lib/bloodhound/resources/app/Collectors/SharpHound.ps1 /opt/win/SharpHound.ps1
 
 # nerdfonts install/reboot
 mkdir -p ~/.local/share/fonts/
