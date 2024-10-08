@@ -34,7 +34,14 @@ nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --local-auth
 nxc smb 192.168.1.0/24 --gen-relay-list output.txt
 
 # enumerate available shares
-nxc smb 192.168.215.138 -u '<VICTIM>' -p '<PASS>' --local-auth --shares
+nxc smb <IP> -u '<VICTIM>' -p '<PASS>' --local-auth --shares
+nxc smb <IP> -u 'anonymous' -p '' --shares
+
+# list all files spider
+nxc smb <IP> -u 'anonymous' -p '' -M spider_plus
+
+# download file
+nxc smb <IP> -u '<VICTIM>' -p '<PASS>' --share <SHARE> --get-file \\path\\to\\<FILE> /tmp/<FILE>
 
 # get the active sessions
 nxc smb <IP_OR_SUBNET> -u '<VICTIM>' -p '<PASS>' --sessions

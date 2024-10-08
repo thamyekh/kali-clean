@@ -1,6 +1,7 @@
 % active directory
 
 # get domain info ie naming context
+nmap --script "ldap* and not brute" <IP> -p 389 -v -Pn -sT
 ldapsearch -x -H ldap://<IP> -s base namingcontexts
 
 # null credentials

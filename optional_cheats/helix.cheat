@@ -1,0 +1,23 @@
+% helix
+
+# add language support
+hx --health <lang>
+:lang <lang>
+
+# change word
+miwc
+
+# find replace
+\%s<SEARCHTERM>
+c<REPLACETERM>
+ESC,
+
+# visual line with multiple cursors
+Cx
+alt+Cx
+
+# undo 
+u
+
+# redo
+U

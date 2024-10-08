@@ -1,6 +1,6 @@
 % linux misc
 
-# find the largest folders
+# disk: find the largest folders
 sudo du -h --max-depth=1 / | sort -h | tail -n 10
 
 # free disk space
@@ -42,3 +42,9 @@ sudo dd bs=4M if=/path/to/file.iso of=/dev/sdX status=progress oflag=sync
 
 # fix usb devices not detected
 sudo lsusb -v
+
+# 7z extract one file only
+7z e <archive.zip> -o <outputdir> <fileFilter>
+
+# compile for windows cpp
+x86_64-w64-mingw32-g++ your_file.cpp -o output_name.exe
