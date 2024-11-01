@@ -1,5 +1,14 @@
 % ftp
 
-# ftp download all
-prompt
-mget *
+# download all
+ftp> prompt
+ftp> mget *
+alternatively:
+wget -r ftp://user:pass@server.com/
+wget -r --user="user@login" --password="Pa$$wo|^D" ftp://server.com/
+
+# Entering Extended Passive Mode
+ftp> passive
+Passive mode: off; fallback to active mode: off.
+ftp> binary
+200 Switching to Binary mode.

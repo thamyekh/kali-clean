@@ -1,4 +1,3 @@
-crackmapexec
 enum4linux-ng
 exploitdb
 evil-winrm

