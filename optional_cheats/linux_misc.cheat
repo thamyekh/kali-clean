@@ -1,5 +1,14 @@
 % linux misc
 
+# grep help
+<binary> --help |& grep -- "<string>"
+
+# copy paste clipboard
+cat <FILE> | xclip -selection clipboard
+
+# scp modified files only with ssh key
+rsync -Pavu -e "ssh -i $HOME/.ssh/<KEY_NAME>" <FILE> <VIC_USER>@<REMOTE_IP>:~
+
 # disk: find the largest folders
 sudo du -h --max-depth=1 / | sort -h | tail -n 10
 
@@ -27,10 +36,11 @@ tar xvf <VM>.ova
 qemu-img convert -O qcow2 <VM>.vmdk <VM>.qcow2
 
 # kill process by name
-pkill <PROCESS_NAME>
+pkill -f <PROCESS_NAME>
 
-# apt purge
+# apt purge proper
 sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove
+sudo apt-get purge --auto-remove <PKG_NAME>
 
 # export PATH temporarily
 export PATH="$HOME/go/bin:$PATH"
@@ -46,5 +56,18 @@ sudo lsusb -v
 # 7z extract one file only
 7z e <archive.zip> -o <outputdir> <fileFilter>
 
-# compile for windows cpp
-x86_64-w64-mingw32-g++ your_file.cpp -o output_name.exe
+# chown user and group (recursively)
+chown newuser:newgroup example.txt
+chown -R newuser:newgroup /path/to/directory
+
+# wifi drivers
+lspci | grep "Network controller”
+apt-get update
+apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
+modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+modprobe wl
+
+# connecting to wifi
+nmcli device wifi list
+nmcli device wifi connect <SSID> password <PASS>
+

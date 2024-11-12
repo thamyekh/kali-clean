@@ -2,5 +2,8 @@
 
 # escape or upgrade shell
 vim -c ':!/bin/bash'
+vim
+:set shell=/bin/bash
+:shell
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

