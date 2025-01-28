@@ -10,6 +10,8 @@ exploit
 use auxiliary/server/socks_proxy
 set srvhost 127.0.0.1
 exploit -j
+alternatively:
+meterpreter > run autoroute -s <INTERNAL_SUBNET>/24
 
 # port scan via pivot
 use auxiliary/scanner/portscan/tcp

@@ -78,6 +78,7 @@ Below are things I will get around to trying and will add them to the install sc
 - Note: If using GodPotato, it's easier to create a new admin user and switch to them with RunasCs.
 - https://github.com/AlessandroZ/LaZagne or Snaffler
 - https://github.com/Azathothas/Toolpacks
+- https://github.com/sandialabs/wiretap
 
 ## Credit
 - https://github.com/AyoItsYas/Mainte

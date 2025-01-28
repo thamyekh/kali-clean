@@ -40,7 +40,7 @@ pkill -f <PROCESS_NAME>
 
 # apt purge proper
 sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove
-sudo apt-get purge --auto-remove <PKG_NAME>
+apt autopurge
 
 # export PATH temporarily
 export PATH="$HOME/go/bin:$PATH"
@@ -70,4 +70,15 @@ modprobe wl
 # connecting to wifi
 nmcli device wifi list
 nmcli device wifi connect <SSID> password <PASS>
+
+# remote logout
+ssh must be enabled and you must ssh in first:
+who
+sudo pkill -KILL -u username
+
+# delete all broken symbolic links
+find / -type l ! -exec test -e {} \; -print0 | xargs -0 rm
+
+# get package info
+apt show netcat-traditional
 

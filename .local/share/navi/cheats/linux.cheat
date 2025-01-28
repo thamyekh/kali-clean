@@ -36,4 +36,8 @@ grep -Hrni <TEXT> <DIR>
 # test reverse ping
 sudo tcpdump -i tun0 icmp
 
+# convert xlsx to csv
+sudo apt install gnumeric
+ssconvert <INPUT>.xlsx <OUTPUT>.csv
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

