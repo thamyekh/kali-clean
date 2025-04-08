@@ -1,0 +1,6 @@
+% tshark
+
+# filter protocol set output format extract specific field
+tshark -r capture.pcapng -Y arp -T fields -e arp.dst.proto_ipv4
+
+; $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

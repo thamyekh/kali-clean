@@ -1,0 +1,12 @@
+% fzf
+
+# search file preview
+fzf --preview 'cat {}'
+
+# search contents
+grep -rl "<STRING>" . | fzf --preview 'grep --color=always "<STRING>" {}'
+
+# select multiple files with TAB
+<CMD> | fzf -m
+
+; $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

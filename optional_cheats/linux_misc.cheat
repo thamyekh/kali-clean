@@ -3,11 +3,17 @@
 # grep help
 <binary> --help |& grep -- "<string>"
 
+# grep lines after
+grep -A <num_lines> "pattern" <file>
+
 # copy paste clipboard
 cat <FILE> | xclip -selection clipboard
 
 # scp modified files only with ssh key
 rsync -Pavu -e "ssh -i $HOME/.ssh/<KEY_NAME>" <FILE> <VIC_USER>@<REMOTE_IP>:~
+
+# scp different port
+scp -P 2222 Pentester@10.0.247.203:linpeas.out .
 
 # disk: find the largest folders
 sudo du -h --max-depth=1 / | sort -h | tail -n 10
@@ -35,8 +41,14 @@ xrandr --output Virtual-1 --mode 1920x900
 tar xvf <VM>.ova
 qemu-img convert -O qcow2 <VM>.vmdk <VM>.qcow2
 
+# list/show contents tar file
+tar tvf <TARGZ_FILE>.tar.gz
+
 # kill process by name
-pkill -f <PROCESS_NAME>
+pkill -f <PROCESS_NAME> || echo "No process found to kill"
+
+# force kill
+kill -9 <PROCESS_NAME>
 
 # apt purge proper
 sudo apt purge <PACKAGE> && sudo apt clean && sudo apt autoremove
@@ -82,3 +94,36 @@ find / -type l ! -exec test -e {} \; -print0 | xargs -0 rm
 # get package info
 apt show netcat-traditional
 
+# installing ventoy
+cd ventoy-*
+lsblk
+sudo ./Ventoy2Disk.sh -i /dev/<USB_SDX>
+
+# create iso from folder
+mkisofs -o <OUTPUT>.iso <FOLDER>
+
+# redhat rpm install
+sudo rpm -ivh example-package-1.0.0-1.x86_64.rpm
+
+# expand/resize partition then lvm example add 40GB
+sudo qemu-img resize /var/lib/libvirt/images/rocky8.qcow2 +40G
+sudo qemu-img info /var/lib/libvirt/images/rocky8.qcow2
+sudo parted -l
+parted
+(parted) resizepart <partition_number> 100%
+sudo partprobe
+sudo pvresize /dev/sdX#
+pvdisplay
+sudo lvextend -l +100%FREE /dev/mapper/lv_name
+rocky (xfs): sudo xfs_growfs /
+debian (ext4): /dev/vg_name/lv_name
+
+# ssh public key
+ssh-keygen -t ed25519 -C "proxmox"
+IDED25519PUB: cat ~/.ssh/id_ed25519.pub
+remote: echo IDED25519PUB | tee -a ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+local: ssh -i ~/.ssh/id_ed25519 root@<container_IP>
+
+# determine wireless chipset
+lspci -nn | grep Network

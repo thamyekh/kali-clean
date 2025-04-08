@@ -66,4 +66,7 @@ sudo ip route add <INTERNAL_SUBNET>/24 dev ligolo
 ligolo-ng » session
 [Agent : ...] » start
 
+# curl proxy file upload example
+curl -x http://127.0.0.1:8080 -X POST http://10.6.244.237:5000/api/test --data-binary @$PWD/test
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

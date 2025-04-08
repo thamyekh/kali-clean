@@ -40,4 +40,7 @@ sudo tcpdump -i tun0 icmp
 sudo apt install gnumeric
 ssconvert <INPUT>.xlsx <OUTPUT>.csv
 
+# base64 no newline wrap
+cat payload.txt | base64 -w 0
+
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

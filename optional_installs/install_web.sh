@@ -2,4 +2,7 @@
 
 sudo apt -y install \
 mitmproxy \
-nikto
+nikto \
+zaproxy
+
+# https://github.com/sAjibuu/Upload_Bypass

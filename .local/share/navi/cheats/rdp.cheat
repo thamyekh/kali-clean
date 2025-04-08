@@ -3,6 +3,7 @@
 # xfreerdp
 xfreerdp3 /d:<DOMAIN> /u:<VIC_USER> /p:<PASS> /v:<IP> /timeout:50000 +auto-reconnect /auto-reconnect-max-retries:0
 xfreerdp3 /u:<VIC_USER> /p:<PASS> /v:<IP> /timeout:50000 +auto-reconnect /auto-reconnect-max-retries:0
+xfreerdp3 /u:<VIC_USER> /p:<PASS> /v:<IP> /timeout:50000 +auto-reconnect /auto-reconnect-max-retries:0 /sec:rdp
 
 # xfreerdp smb
 xfreerdp3 /d:<DOMAIN> /u:<VIC_USER> /v:<IP> /timeout:50000 +auto-reconnect /auto-reconnect-max-retries:0 /drive:tmp,/tmp
