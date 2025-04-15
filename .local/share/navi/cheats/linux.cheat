@@ -31,7 +31,10 @@ export KRB5CCNAME=/tmp/krb5cc_minenow
 
 # recursively find string in files
 grep -Horni <TEXT> <DIR> 
-grep -Hrni <TEXT> <DIR> 
+grep -Hrni <TEXT> <DIR>
+
+# recursively find string; find another string from results
+grep -lori <TEXT1> | xargs grep -Horn <TEXT2>
 
 # test reverse ping
 sudo tcpdump -i tun0 icmp
@@ -42,5 +45,10 @@ ssconvert <INPUT>.xlsx <OUTPUT>.csv
 
 # base64 no newline wrap
 cat payload.txt | base64 -w 0
+
+# create dummy image
+convert -size 100x100 xc:red output.png
+convert -size 100x100 gradient:blue-red gradient.png
+convert -size 100x100 pattern:checkerboard checker.png
 
 $ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'

@@ -6,3 +6,4 @@ cp config $HOME/.config/i3/config
 sudo cp volume-pipewire /usr/share/i3blocks
 sudo cp datetime /usr/share/i3blocks
 cp i3blocks.conf $HOME/.config/i3/i3blocks.conf
+sudo update-locale LANG=en_US.UTF-8

