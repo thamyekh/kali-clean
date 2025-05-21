@@ -124,3 +124,7 @@ S: Stacked queries
 T: Time-based blind
 Q: Inline queries
 sqlmap --purge -u "http://example.com/?id=1" -p id --technique="UB"
+
+# mysql mariadb cli
+mysql -u <DB_USER> -p <DATABASE_NAME> -h <IP> -P <PORT>
+minimum: mysql -u <DB_USER> -p <DATABASE_NAME>

