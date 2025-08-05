@@ -1,0 +1,11 @@
+% windows misc
+
+# powershell echo/write multi lines to file
+<DOLLAR>multilineText = @"
+Special characters like $ will be interpreted unless escaped
+    This line is indented
+"@
+<DOLLAR>multilineText | Out-File -FilePath "C:\path\to\file.txt"
+
+$ LHOST: ip -f inet addr show tun0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
+$ DOLLAR: printf '$'

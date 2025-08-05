@@ -132,5 +132,9 @@ chmod 600 ~/.ssh/authorized_keys
 local: ssh -i ~/.ssh/id_ed25519 root@<TARGET>
 alternatively: ssh-copy-id <REMOTE_USER>@<TARGET>
 
+# ssh load private key into memory
+ssh-add <PATH_TO_KEY>
+now you dont need to use -i
+
 # determine wireless chipset
 lspci -nn | grep Network

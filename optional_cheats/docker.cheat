@@ -11,3 +11,6 @@ docker ps -a
 
 # start all containers
 docker restart $(docker ps -aq)
+
+# remote into container as root
+docker exec -it  --user root <container_name_or_id> /bin/bash
