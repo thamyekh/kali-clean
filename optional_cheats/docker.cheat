@@ -14,3 +14,6 @@ docker restart $(docker ps -aq)
 
 # remote into container as root
 docker exec -it  --user root <container_name_or_id> /bin/bash
+
+# view logs (useful when in daemon mode)
+docker logs <CONTAINER_NAME_OR_ID>

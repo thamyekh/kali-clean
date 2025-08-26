@@ -30,3 +30,11 @@ wait for CRON job to trigger
 # custom user-agent
 session = requests.Session()
 session.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0'})
+
+# python requests/session post
+response = requests.post('https://example.com/api', data={'key':'value'})
+response = requests.post('https://example.com/api', json={'key': 'value'}, headers={'Content-Type': 'application/json'})
+
+# python proxies
+requests.get('http://example.com', proxies={'http':'http://127.0.0.1:8080'})
+

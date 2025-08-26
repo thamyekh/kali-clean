@@ -138,3 +138,10 @@ now you dont need to use -i
 
 # determine wireless chipset
 lspci -nn | grep Network
+
+# test rtsp stream
+ffplay rtsp://<admin>:<pass>@192.168.1.200:554/h264Preview_01_sub
+
+# run commands from different root
+/usr/sbin/chroot <different_root> <cmd>
+eg: /usr/sbin/chroot /var/lib/lxc/101/rootfs apt update # (after running 'pct mount 101')
