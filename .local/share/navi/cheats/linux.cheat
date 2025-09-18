@@ -35,6 +35,7 @@ grep -Hrni <TEXT> <DIR>
 
 # recursively find string; find another string from results
 grep -lori <TEXT1> | xargs grep -Horn <TEXT2>
+grep -lori "query1" | xargs grep -l "query2"
 
 # test reverse ping
 sudo tcpdump -i tun0 icmp

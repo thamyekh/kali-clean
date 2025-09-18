@@ -82,8 +82,11 @@ sqlmap --purge -u 'http://<URL>?uname=test&psw=test' --time-sec=10
 # sqlmap post
 sqlmap --purge -X POST --data "<DATA>" -H "Content-Type: <CONTENT_TYPE>" -u '<URL>' --time-sec=10
 
-#sqlmap post test parameters
+# sqlmap post test parameters
 sqlmap --purge -u "<URL>" -X POST --data "db=mysql&name=taco&sort=id&order=asc" -p "name,sort,order"
+
+# sqlmap inject point on path route manually
+sqlmap --purge -X POST -u 'http://<URL>/api/user/*/activate?apiKey=d'
 
 # sqlmap dump all with backend type
 DB_TYPE = mysql, mssql, postgres, oracle
