@@ -30,12 +30,12 @@ tofu destroy -target=<resource_type>.<resource_name>
 tofu fmt
 
 # create keypair to use with instances
-ssh-keygen -t ed25519 -C "<discription_of_key>" -f ~/keys/<key_filename> # linux
-ssh-keygen -t rsa -b 2048 -m pem -C "<discription_of_key>" -f ~/keys/<key_filename> # windows
-chmod 600 $HOME/keys/<key_filename>
+ssh-keygen -t ed25519 -C "<discription_of_key>" -f ~/.ssh/<key_filename> # linux
+ssh-keygen -t rsa -b 2048 -m pem -C "<discription_of_key>" -f ~/.ssh/<key_filename> # windows
+chmod 600 $HOME/.ssh/<key_filename>
 add to main.tf:
 resource "aws_key_pair" "<key_name>" {
   key_name   = "<key_name>"
-  public_key = file("~/keys/<key_filename>.pub")
+  public_key = file("~/.ssh/<key_filename>.pub")
 }
 

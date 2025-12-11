@@ -20,3 +20,6 @@ docker logs <CONTAINER_NAME_OR_ID>
 
 # force container update in compose
 docker compose pull
+
+# Stop and remove containers, networks, volumes, and images
+docker-compose down -v --rmi all --remove-orphans

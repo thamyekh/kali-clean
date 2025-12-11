@@ -31,10 +31,29 @@ wait for CRON job to trigger
 session = requests.Session()
 session.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0'})
 
-# python requests/session post
+# requests/session post
 response = requests.post('https://example.com/api', data={'key':'value'})
 response = requests.post('https://example.com/api', json={'key': 'value'}, headers={'Content-Type': 'application/json'})
 
-# python proxies
+# proxies
 requests.get('http://example.com', proxies={'http':'http://127.0.0.1:8080'})
 
+# strings to tar upload
+import tarfile, io
+uncompressed = "string to tar and send"
+tar_buffer = io.BytesIO()
+with tarfile.open(fileobj=tar_buffer, mode='w:gz') as tar:
+    uncompressed_bytes = uncompressed.encode('utf-8')
+    tar_info = tarfile.TarInfo(name="uncompressed.txt")
+    tar_info.size = len(uncompressed_bytes)
+    tar.addfile(tar_info, io.BytesIO(uncompressed_bytes))
+tar_buffer.seek(0)
+files = {
+    'file': (f'import.gz', tar_buffer, 'application/octet-stream')
+}
+session.post(f"http://{args.target}/upload", files=files, proxies=proxies)
+tar_buffer.close()
+
+# fake smtp server to catch emails
+apt install python3-aiosmtpd
+aiosmtpd -n -l 127.0.0.1:587
