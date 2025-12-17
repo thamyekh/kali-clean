@@ -1,7 +1,0 @@
-% sed
-
-# replace
-sudo sed -i 's/<OLDLINE>/<NEWLINE>/' <FILE>
-
-# trim everthing before 'DATA='
-sed 's/^.*DATA=/DATA=/' <FILE>

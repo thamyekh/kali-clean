@@ -5,6 +5,7 @@ apache2
 arc-theme
 betterlockscreen
 build-essential
+cargo
 cifs-utils
 compton
 conky-std
