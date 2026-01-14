@@ -11,7 +11,7 @@ sed -i "s/#alias dir='dir --color=auto'/alias n='navi --print'/" $HOME/.zshrc
 betterlockscreen -u . --fx color --color 808080
 
 # rust tools install
-cargo install rustscan navi
+cargo install navi rustscan uv
 git clone https://github.com/thamyekh/navi-cheats ~/.local/share/navi/cheats
 
 # nerdfonts install/reboot
