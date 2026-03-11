@@ -7,10 +7,9 @@
 This post-installation script is intended to be used on minimal Kali VM with no tools. I used [the official VM build script](https://gitlab.com/kalilinux/build-scripts/kali-vm) with the following options to get started. It should still work fine on a bare metal installation.
 
 ```
-./build.sh -v vmware -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl neovim"
-
+./build.sh -v vmware -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl vim"
 # alternatively
-./build.sh -v qemu -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl neovim"
+./build.sh -v qemu -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl vim"
 ```
 
 If you are building on a Windows machine:
@@ -19,23 +18,20 @@ If you are building on a Windows machine:
 - install docker in WSL2
 
 ```
-# confirm you are running WSL2
 wsl --version
-
-# start the docker service
 sudo systemctl start docker
-
-# continue building your kali VM
 ./build-in-container.sh -v vmware -D none -Z $(cat /etc/timezone) -T none -P "network-manager curl neovim"
 
 # copy from WSL to your Windows host (eg. Downloads folder)
 cp -r images/kali-linux-rolling-vmware-amd64.vmwarevm /mnt/c/Users/<USER>/Downloads
+
+# in VMWare workstation you may need to select Manage > Change Hardware Compatibility, and follow the wizard to upgrade to the latest version.
 ```
 
 ## Installation
 
 ```
-sudo -sE ./install.sh 2>install.err
+sudo -sE ./install.sh > >(tee install.out) 2> >(tee install.err >&2)
 ```
 
 ## QoL Improvements vs default Kali
