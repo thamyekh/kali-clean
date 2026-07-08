@@ -10,3 +10,4 @@ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.d
     tee /etc/apt/sources.list.d/docker.list 
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 apt update && apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+usermod -aG docker kali
