@@ -1,6 +1,8 @@
+burpsuite
+dsniff
 enum4linux-ng
 exploitdb
-evil-winrm
+evil-winrm-py
 feroxbuster
 hashcat
 ffuf
@@ -10,14 +12,13 @@ ligolo-ng
 metasploit-framework
 name-that-hash
 netexec
+nikto
 nmap
 proxychains4
-python3-impacket
 responder
 rlwrap
 seclists
 sendemail
-smbclient
 snmp
 sqlmap
 sshuttle
